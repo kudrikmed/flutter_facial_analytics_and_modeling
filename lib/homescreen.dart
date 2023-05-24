@@ -8,9 +8,11 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 String WEBPATH = '';
+Map<String, dynamic> DATA  = {};
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -22,12 +24,13 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   String selectedImagePath = '';
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('SuperFace'),
+        title: Text(AppLocalizations.of(context)!.appName),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -61,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
               //     child: const Text('Select')),
               HomeScreenButton(
                 iconData: Icons.account_box_outlined,
-                buttonText: 'Select image',
+                buttonText: AppLocalizations.of(context)!.selectImage,
                 onTap: () async {
                   selectImage();
                   setState(() {});
@@ -85,10 +88,10 @@ class _HomeScreenState extends State<HomeScreen> {
               //     child: Text('Transform')),
               HomeScreenButton(
                 iconData: Icons.upload,
-                buttonText: 'Transform image',
+                buttonText: AppLocalizations.of(context)!.transformImage,
                 onTap: () async {
                   selectedImagePath == ''
-                      ? ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("No Image Selected !")))
+                      ? ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context)!.noImageSelected)))
                       : uploadFile(selectedImagePath);
                 },
               ),
@@ -114,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(
                   children: [
                     Text(
-                      'Select Image From:',
+                      AppLocalizations.of(context)!.selectImageFrom,
                       style: TextStyle(
                           fontSize: 18.0, fontWeight: FontWeight.bold),
                     ),
@@ -131,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               setState(() {});
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                content: Text("No Image Selected !"),
+                                content: Text(AppLocalizations.of(context)!.noImageSelected),
                               ));
                             }
                           },
@@ -146,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       height: 60,
                                       width: 60,
                                     ),
-                                    Text('Gallery'),
+                                    Text(AppLocalizations.of(context)!.gallery),
                                   ],
                                 ),
                               )),
@@ -162,7 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               setState(() {});
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                content: Text("No Image Captured !"),
+                                content: Text(AppLocalizations.of(context)!.noImageCaptured),
                               ));
                             }
                           },
@@ -177,7 +180,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       height: 60,
                                       width: 60,
                                     ),
-                                    Text('Camera'),
+                                    Text(AppLocalizations.of(context)!.camera),
                                   ],
                                 ),
                               )),
@@ -230,17 +233,27 @@ class _HomeScreenState extends State<HomeScreen> {
           .then((response) {
 
         if (response.statusCode == 200) {
-          print("Uploaded! ");
-          print('response.body ' + response.body);
           var responseBody = jsonDecode(response.body);
           if (responseBody['path'] == 'bad image ...') {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text("Upload image with one portrait !"),
+              content: Text(AppLocalizations.of(context)!.uploadImageWithPortrait),
             ));
           }
           else {
-            print(responseBody['path']);
+            print(responseBody);
             WEBPATH = responseBody['path'];
+            DATA['lips_ratio'] = double.tryParse(responseBody['data']['lips_ratio']);
+            DATA['mouth_cant_left'] = double.tryParse(responseBody['data']['mouth_cant_left']);
+            DATA['mouth_cant_right'] = double.tryParse(responseBody['data']['mouth_cant_right']);
+            DATA['upper_lip_ratio'] = double.tryParse(responseBody['data']['upper_lip_ratio']);
+            DATA['bigonial_bizygomatic_ratio'] = double.tryParse(responseBody['data']['bigonial_bizygomatic_ratio']);
+            DATA['canthal_tilt_left'] = double.tryParse(responseBody['data']['canthal_tilt_left']);
+            DATA['canthal_tilt_right'] = double.tryParse(responseBody['data']['canthal_tilt_right']);
+            DATA['brow_apex_projection_left'] = double.tryParse(responseBody['data']['brow_apex_projection_left']);
+            DATA['brow_apex_projection_right'] = double.tryParse(responseBody['data']['brow_apex_projection_right']);
+            DATA['medial_eyebrow_tilt_left'] = double.tryParse(responseBody['data']['medial_eyebrow_tilt_left']);
+            DATA['medial_eyebrow_tilt_right'] = double.tryParse(responseBody['data']['medial_eyebrow_tilt_right']);
+            print(DATA);
             Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -288,21 +301,21 @@ class _BottomNavigationBarExampleState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Results'),
+        title: Text(AppLocalizations.of(context)!.results),
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.analytics),
-            label: 'Analytics',
+            label: AppLocalizations.of(context)!.analytics,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.face_retouching_natural_outlined),
-            label: 'Modeling',
+            label: AppLocalizations.of(context)!.modeling,
           ),
         ],
         currentIndex: _selectedIndex,
@@ -377,7 +390,7 @@ class LipsAnalytics extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Lips analytics'),
+        title: Text(AppLocalizations.of(context)!.lipsAnalytics),
       ),
       body:
       SingleChildScrollView(
@@ -394,7 +407,7 @@ class LipsAnalytics extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
                       children: [
-                        Text('Mouth canthal tilt',
+                        Text(AppLocalizations.of(context)!.mouthCanthalTilt,
                           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
                         Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/lips_cant.png',
                           loadingBuilder: (BuildContext context, Widget child,
@@ -411,6 +424,10 @@ class LipsAnalytics extends StatelessWidget {
                               ),
                             );
                           },),
+                        SizedBox(
+                          height: 10.0,
+                        ),
+                        Text(AppLocalizations.of(context)!.mouthCornerAngleTheory),
                       ],
                     )
 
@@ -425,7 +442,7 @@ class LipsAnalytics extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: [
-                          Text('Lips ratio',
+                          Text(AppLocalizations.of(context)!.lipsRatio,
                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
                           Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/lips_ratio.png',
                             loadingBuilder: (BuildContext context, Widget child,
@@ -456,7 +473,7 @@ class LipsAnalytics extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: [
-                          Text('Lower third ratio',
+                          Text(AppLocalizations.of(context)!.lowerThirdRatio,
                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
                           Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/upper_lip_ratio.png',
                             loadingBuilder: (BuildContext context, Widget child,
@@ -493,7 +510,7 @@ class EyesAnalytics extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Eyes analytics'),
+        title: Text(AppLocalizations.of(context)!.eyesAnalytics),
       ),
       body:
       SingleChildScrollView(
@@ -510,7 +527,7 @@ class EyesAnalytics extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: [
-                          Text('Intercanthal tilt',
+                          Text(AppLocalizations.of(context)!.intercanthalTilt,
                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
                           Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/canthal_tilt.png',
                             loadingBuilder: (BuildContext context, Widget child,
@@ -547,7 +564,7 @@ class BrowsAnalytics extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Eyebrows analytics'),
+        title: Text(AppLocalizations.of(context)!.eyebrowsAnalytics),
       ),
       body:
       SingleChildScrollView(
@@ -564,7 +581,7 @@ class BrowsAnalytics extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: [
-                          Text('Medial eyebrow tilt',
+                          Text(AppLocalizations.of(context)!.medialEyebrowTilt,
                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
                           Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/medial_eyebrow_tilt.png',
                             loadingBuilder: (BuildContext context, Widget child,
@@ -595,7 +612,7 @@ class BrowsAnalytics extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: [
-                          Text('Eyebrow apex projection',
+                          Text(AppLocalizations.of(context)!.eyebrowApexProjection,
                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
                           Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/brow_apex_projection.png',
                             loadingBuilder: (BuildContext context, Widget child,
@@ -632,7 +649,7 @@ class FaceFormAnalytics extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Facial form analytics'),
+        title: Text(AppLocalizations.of(context)!.facialFormAnalytics),
       ),
       body:
       SingleChildScrollView(
@@ -649,7 +666,7 @@ class FaceFormAnalytics extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: [
-                          Text('Bigonial-bizygomatic ratio',
+                          Text(AppLocalizations.of(context)!.bigonialBizygomaticRatio,
                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
                           Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/bigonial_bizygomatic_ratio.png',
                             loadingBuilder: (BuildContext context, Widget child,
@@ -704,7 +721,7 @@ class AnalyticsDashboard extends StatelessWidget {
                     child: Column(
                         children: <Widget>[
                           Image.asset('assets/images/lips.png', height: 128, width: 128, fit: BoxFit.fill,),
-                          Text('Lips')
+                          Text(AppLocalizations.of(context)!.lips)
                         ]
                     )
                 )
@@ -723,7 +740,7 @@ class AnalyticsDashboard extends StatelessWidget {
                     child: Column(
                         children: <Widget>[
                           Image.asset('assets/images/visibility.png', height: 128, width: 128, fit: BoxFit.fill,),
-                          Text('Eyes')
+                          Text(AppLocalizations.of(context)!.eyes)
                         ]
                     )
                 )
@@ -742,7 +759,7 @@ class AnalyticsDashboard extends StatelessWidget {
                     child: Column(
                         children: <Widget>[
                           Image.asset('assets/images/eyebrow.png', height: 128, width: 128, fit: BoxFit.fill,),
-                          Text('Eyebrows')
+                          Text(AppLocalizations.of(context)!.eyebrows)
                         ]
                     )
                 )
@@ -761,7 +778,7 @@ class AnalyticsDashboard extends StatelessWidget {
                     child: Column(
                         children: <Widget>[
                           Image.asset('assets/images/face.png', height: 128, width: 128, fit: BoxFit.fill,),
-                          Text('Face form')
+                          Text(AppLocalizations.of(context)!.faceForm)
                         ]
                     )
                 )
@@ -798,7 +815,7 @@ class ModelingDashboard extends StatelessWidget {
                   child: Column(
                       children: <Widget>[
                         Image.asset('assets/images/lips.png', height: 128, width: 128, fit: BoxFit.fill,),
-                        Text('Lips')
+                        Text(AppLocalizations.of(context)!.lips)
                       ]
                   )
               )
@@ -817,7 +834,7 @@ class LipsModeling extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Lips modeling'),
+        title: Text(AppLocalizations.of(context)!.lipsModeling),
       ),
       body:
       SingleChildScrollView(
@@ -834,7 +851,7 @@ class LipsModeling extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: [
-                          Text('Flat bow',
+                          Text(AppLocalizations.of(context)!.flatBow,
                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
                           Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/transfer_1.jpg',
                             loadingBuilder: (BuildContext context, Widget child,
@@ -864,12 +881,12 @@ class LipsModeling extends StatelessWidget {
                   children: [
                     HomeScreenButton(
                       iconData: Icons.save,
-                      buttonText: 'Save image',
+                      buttonText: AppLocalizations.of(context)!.saveImage,
                       onTap: () async {
                         await GallerySaver.saveImage('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/transfer_1.jpg').then<void>((bool? success) {
                           if (success ?? false) {
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Text("Image saved"),
+                              content: Text(AppLocalizations.of(context)!.imageSaved),
                             ));
                           }});
                       },
@@ -879,7 +896,7 @@ class LipsModeling extends StatelessWidget {
                     ),
                     HomeScreenButton(
                       iconData: Icons.share,
-                      buttonText: 'Share image',
+                      buttonText: AppLocalizations.of(context)!.shareImage,
                       onTap: () async {
                         Share.share('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/transfer_1.jpg', );
                       },
@@ -895,7 +912,7 @@ class LipsModeling extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: [
-                          Text('Vitreous',
+                          Text(AppLocalizations.of(context)!.vitreous,
                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
                           Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/transfer_2.jpg',
                             loadingBuilder: (BuildContext context, Widget child,
@@ -925,12 +942,12 @@ class LipsModeling extends StatelessWidget {
                   children: [
                     HomeScreenButton(
                       iconData: Icons.save,
-                      buttonText: 'Save image',
+                      buttonText: AppLocalizations.of(context)!.saveImage,
                       onTap: () async {
                         await GallerySaver.saveImage('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/transfer_2.jpg').then<void>((bool? success) {
                           if (success ?? false) {
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Text("Image saved"),
+                              content: Text(AppLocalizations.of(context)!.imageSaved),
                             ));
                               }});
                       },
@@ -940,7 +957,7 @@ class LipsModeling extends StatelessWidget {
                     ),
                     HomeScreenButton(
                       iconData: Icons.share,
-                      buttonText: 'Share image',
+                      buttonText: AppLocalizations.of(context)!.shareImage,
                       onTap: () async {
                         Share.share('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/transfer_2.jpg', );
                       },
@@ -956,7 +973,7 @@ class LipsModeling extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: [
-                          Text('French',
+                          Text(AppLocalizations.of(context)!.french,
                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
                           Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/transfer_3.jpg',
                             loadingBuilder: (BuildContext context, Widget child,
@@ -986,12 +1003,12 @@ class LipsModeling extends StatelessWidget {
                   children: [
                     HomeScreenButton(
                       iconData: Icons.save,
-                      buttonText: 'Save image',
+                      buttonText: AppLocalizations.of(context)!.saveImage,
                       onTap: () async {
                         await GallerySaver.saveImage('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/transfer_3.jpg').then<void>((bool? success) {
                           if (success ?? false) {
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Text("Image saved"),
+                              content: Text(AppLocalizations.of(context)!.imageSaved),
                             ));
                           }});
                       },
@@ -1001,7 +1018,7 @@ class LipsModeling extends StatelessWidget {
                     ),
                     HomeScreenButton(
                       iconData: Icons.share,
-                      buttonText: 'Share image',
+                      buttonText: AppLocalizations.of(context)!.shareImage,
                       onTap: () async {
                         Share.share('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/transfer_3.jpg', );
                       },

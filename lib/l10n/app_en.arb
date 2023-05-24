@@ -1,0 +1,146 @@
+{
+  "helloWorld": "Hello World!",
+  "@helloWorld": {
+    "description": "The conventional newborn programmer greeting"
+  },
+  "appName": "SuperFace",
+  "@appName": {
+    "description": "Application name"
+  },
+  "selectImage": "Select image",
+  "@selectImage": {
+    "description": "Button select image title"
+  },
+  "transformImage": "Transform image",
+  "@transformImage": {
+    "description": "Button transform image title"
+    },
+  "selectImageFrom": "Select image from: ",
+  "@selectImageFrom": {
+    "description": "Select image dialogue text"
+    },
+  "noImageSelected": "No image selected !",
+  "@noImageSelected": {
+    "description": "Error message, when image is not selected"
+    },
+  "gallery": "Gallery",
+  "@gallery": {
+    "description": "Gallery"
+    },
+  "noImageCaptured": "No image captured !",
+  "@noImageCaptured": {
+    "description": "Image not selected in gallery"
+    },
+  "camera": "Camera",
+  "@camera": {
+    "description": "Camera"
+    },
+  "uploadImageWithPortrait": "Upload image with portrait !",
+  "@uploadImageWithPortrait": {
+    "description": "Error message, when incorrect image uploaded"
+    },
+  "results": "Results",
+  "@results": {
+    "description": "Results"
+    },
+  "analytics": "Analytics",
+  "@analytics": {
+    "description": "Analytics title in bottom tab"
+    },
+  "modeling": "Modeling",
+  "@modeling": {
+    "description": "Modeling title in bottom tab"
+    },
+  "lipsAnalytics": "Lips analytics",
+  "@lipsAnalytics": {
+    "description": "Lips analytics appbar title"
+    },
+  "mouthCanthalTilt": "Mouth canthal tilt",
+  "@mouthCanthalTilt": {
+    "description": "Mouth canthal tilt title"
+    },
+  "lipsRatio": "Lips ratio",
+  "@lipsRatio": {
+    "description": "Lips ratio title"
+    },
+  "lowerThirdRatio": "Lower third ratio",
+  "@lowerThirdRatio": {
+    "description": "Lower third ratio title"
+    },
+  "eyesAnalytics": "Eyes analytics",
+  "@eyesAnalytics": {
+    "description": "Eyes analytics appbar title"
+    },
+  "intercanthalTilt": "Intercanthal tilt",
+  "@intercanthalTilt": {
+    "description": "Intercanthal tilt title"
+    },
+  "eyebrowsAnalytics": "Eyebrows analytics",
+  "@eyebrowsAnalytics": {
+    "description": "Eyebrows analytics appbar title"
+    },
+  "medialEyebrowTilt": "Medial eyebrows tilt",
+  "@medialEyebrowTilt": {
+    "description": "Medial eyebrows tilt title"
+    },
+  "eyebrowApexProjection": "Eyebrow apex projection",
+  "@eyebrowApexProjection": {
+    "description": "Eyebrow apex projection title"
+    },
+  "facialFormAnalytics": "Facial form analytics",
+  "@facialFormAnalytics": {
+    "description": "Facial form analytics title"
+    },
+  "bigonialBizygomaticRatio": "Bigonial-bizygomatic ratio",
+  "@bigonialBizygomaticRatio": {
+    "description": "Bigonial-bizygomatic ratio title"
+    },
+  "lips": "Lips",
+  "@lips": {
+    "description": "Lips card title"
+    },
+  "eyes": "Eyes",
+  "@eyes": {
+    "description": "Eyes card title"
+    },
+  "eyebrows": "Eyebrows",
+  "@eyebrows": {
+    "description": "Eyebrows card title"
+    },
+  "faceForm": "Face form",
+  "@faceForm": {
+    "description": "Face form card title"
+    },
+  "lipsModeling": "Lips modeling",
+  "@lipsModeling": {
+    "description": "Lips modeling appbar title"
+    },
+  "flatBow": "Flat bow",
+  "@flatBow": {
+    "description": "Flat bow lips type"
+    },
+  "french": "French",
+  "@french": {
+    "description": "French lips type"
+    },
+  "vitreous": "Vitreous",
+  "@vitreous": {
+    "description": "Vitreous lips type"
+    },
+  "saveImage": "Save image",
+  "@saveImage": {
+    "description": "Save image button text"
+    },
+  "imageSaved": "Image saved",
+  "@imageSaved": {
+    "description": "Image saved toast text"
+    },
+  "shareImage": "Share image",
+  "@shareImage": {
+    "description": "Share image button text"
+    },
+  "mouthCornerAngleTheory": "One of the many features that contribute to the aging appearance of the perioral region is the downward turn to the oral commissures. This downward turn, which often extends to a significant oral commissure groove and ‘‘marionette’’ appearance, gives a sad, tired, almost angry look in some patients.",
+  "@mouthCornerAngleTheory": {
+    "description": "Mouth corner angle theory"
+    }
+}
