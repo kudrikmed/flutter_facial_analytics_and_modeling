@@ -403,13 +403,17 @@ class LipsAnalytics extends StatelessWidget {
                 ),
                 Card(
                   elevation: 5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(AppLocalizations.of(context)!.mouthCanthalTilt,
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
                         Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/lips_cant.png',
+                          fit: BoxFit.fitWidth,
                           loadingBuilder: (BuildContext context, Widget child,
                               ImageChunkEvent? loadingProgress) {
                             if (loadingProgress == null) {
@@ -424,10 +428,68 @@ class LipsAnalytics extends StatelessWidget {
                               ),
                             );
                           },),
+                        Container(
+                          padding: const EdgeInsets.fromLTRB(15, 15, 15, 0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                  AppLocalizations.of(context)!.mouthCanthalTilt,
+                                  style: TextStyle(
+                                    fontSize: 24,
+                                    color: Colors.grey[800],
+                                  )
+                              ),
+                              Container(height: 10),
+                              Text(
+                                AppLocalizations.of(context)!.mouthCornerAngleTheory,
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.grey[700],
+                                ),
+                              ),
+                              Container(height: 10),
+                              Text(
+                                MakeConclusion.getMouthCanthalTilt(context),
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.grey[700],
+                                ),
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  // Add a spacer to push the buttons to the right side of the card
+                                  const Spacer(),
+                                  // Add a text button labeled "SHARE" with transparent foreground color and an accent color for the text
+                                  TextButton(
+                                    style: TextButton.styleFrom(
+                                      foregroundColor: Colors.transparent,
+                                    ),
+                                    child: Text(
+                                        AppLocalizations.of(context)!.shareImage,
+                                      style: TextStyle(color: Colors.blue),
+                                    ),
+                                    onPressed: () {},
+                                  ),
+                                  // Add a text button labeled "EXPLORE" with transparent foreground color and an accent color for the text
+                                  TextButton(
+                                    style: TextButton.styleFrom(
+                                      foregroundColor: Colors.transparent,
+                                    ),
+                                    child: const Text(
+                                      "EXPLORE",
+                                      style: TextStyle(color: Colors.blue),
+                                    ),
+                                    onPressed: () {},
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
                         SizedBox(
                           height: 10.0,
                         ),
-                        Text(AppLocalizations.of(context)!.mouthCornerAngleTheory),
                       ],
                     )
 
@@ -438,13 +500,17 @@ class LipsAnalytics extends StatelessWidget {
                 ),
                 Card(
                   elevation: 5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
                   child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(AppLocalizations.of(context)!.lipsRatio,
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
                           Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/lips_ratio.png',
+                            fit: BoxFit.fitWidth,
                             loadingBuilder: (BuildContext context, Widget child,
                                 ImageChunkEvent? loadingProgress) {
                               if (loadingProgress == null) {
@@ -459,6 +525,68 @@ class LipsAnalytics extends StatelessWidget {
                                 ),
                               );
                             },),
+                          Container(
+                            padding: const EdgeInsets.fromLTRB(15, 15, 15, 0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                    AppLocalizations.of(context)!.lipsRatio,
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                      color: Colors.grey[800],
+                                    )
+                                ),
+                                Container(height: 10),
+                                Text(
+                                  AppLocalizations.of(context)!.lipsRatioTheory,
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.grey[700],
+                                  ),
+                                ),
+                                Container(height: 10),
+                                Text(
+                                  MakeConclusion.getLipsRatio(context),
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.grey[700],
+                                  ),
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    // Add a spacer to push the buttons to the right side of the card
+                                    const Spacer(),
+                                    // Add a text button labeled "SHARE" with transparent foreground color and an accent color for the text
+                                    TextButton(
+                                      style: TextButton.styleFrom(
+                                        foregroundColor: Colors.transparent,
+                                      ),
+                                      child: Text(
+                                        AppLocalizations.of(context)!.shareImage,
+                                        style: TextStyle(color: Colors.blue),
+                                      ),
+                                      onPressed: () {},
+                                    ),
+                                    // Add a text button labeled "EXPLORE" with transparent foreground color and an accent color for the text
+                                    TextButton(
+                                      style: TextButton.styleFrom(
+                                        foregroundColor: Colors.transparent,
+                                      ),
+                                      child: const Text(
+                                        "EXPLORE",
+                                        style: TextStyle(color: Colors.blue),
+                                      ),
+                                      onPressed: () {},
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
                         ],
                       )
 
@@ -469,13 +597,17 @@ class LipsAnalytics extends StatelessWidget {
                 ),
                 Card(
                   elevation: 5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
                   child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(AppLocalizations.of(context)!.lowerThirdRatio,
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
                           Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/upper_lip_ratio.png',
+                            fit: BoxFit.fitWidth,
                             loadingBuilder: (BuildContext context, Widget child,
                                 ImageChunkEvent? loadingProgress) {
                               if (loadingProgress == null) {
@@ -490,6 +622,68 @@ class LipsAnalytics extends StatelessWidget {
                                 ),
                               );
                             },),
+                          Container(
+                            padding: const EdgeInsets.fromLTRB(15, 15, 15, 0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                    AppLocalizations.of(context)!.lowerThirdRatio,
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                      color: Colors.grey[800],
+                                    )
+                                ),
+                                Container(height: 10),
+                                Text(
+                                  AppLocalizations.of(context)!.upperLipRatioTheory,
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.grey[700],
+                                  ),
+                                ),
+                                Container(height: 10),
+                                Text(
+                                  MakeConclusion.getUpperLipRatio(context),
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.grey[700],
+                                  ),
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    // Add a spacer to push the buttons to the right side of the card
+                                    const Spacer(),
+                                    // Add a text button labeled "SHARE" with transparent foreground color and an accent color for the text
+                                    TextButton(
+                                      style: TextButton.styleFrom(
+                                        foregroundColor: Colors.transparent,
+                                      ),
+                                      child: Text(
+                                        AppLocalizations.of(context)!.shareImage,
+                                        style: TextStyle(color: Colors.blue),
+                                      ),
+                                      onPressed: () {},
+                                    ),
+                                    // Add a text button labeled "EXPLORE" with transparent foreground color and an accent color for the text
+                                    TextButton(
+                                      style: TextButton.styleFrom(
+                                        foregroundColor: Colors.transparent,
+                                      ),
+                                      child: const Text(
+                                        "EXPLORE",
+                                        style: TextStyle(color: Colors.blue),
+                                      ),
+                                      onPressed: () {},
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
                         ],
                       )
 
@@ -523,13 +717,17 @@ class EyesAnalytics extends StatelessWidget {
                 ),
                 Card(
                   elevation: 5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
                   child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(AppLocalizations.of(context)!.intercanthalTilt,
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
                           Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/canthal_tilt.png',
+                            fit: BoxFit.fitWidth,
                             loadingBuilder: (BuildContext context, Widget child,
                                 ImageChunkEvent? loadingProgress) {
                               if (loadingProgress == null) {
@@ -544,6 +742,68 @@ class EyesAnalytics extends StatelessWidget {
                                 ),
                               );
                             },),
+                          Container(
+                            padding: const EdgeInsets.fromLTRB(15, 15, 15, 0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                    AppLocalizations.of(context)!.intercanthalTilt,
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                      color: Colors.grey[800],
+                                    )
+                                ),
+                                Container(height: 10),
+                                Text(
+                                  AppLocalizations.of(context)!.intercanthalTiltTheory,
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.grey[700],
+                                  ),
+                                ),
+                                Container(height: 10),
+                                Text(
+                                  MakeConclusion.getIntercanthalTilt(context),
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.grey[700],
+                                  ),
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    // Add a spacer to push the buttons to the right side of the card
+                                    const Spacer(),
+                                    // Add a text button labeled "SHARE" with transparent foreground color and an accent color for the text
+                                    TextButton(
+                                      style: TextButton.styleFrom(
+                                        foregroundColor: Colors.transparent,
+                                      ),
+                                      child: Text(
+                                        AppLocalizations.of(context)!.shareImage,
+                                        style: TextStyle(color: Colors.blue),
+                                      ),
+                                      onPressed: () {},
+                                    ),
+                                    // Add a text button labeled "EXPLORE" with transparent foreground color and an accent color for the text
+                                    TextButton(
+                                      style: TextButton.styleFrom(
+                                        foregroundColor: Colors.transparent,
+                                      ),
+                                      child: const Text(
+                                        "EXPLORE",
+                                        style: TextStyle(color: Colors.blue),
+                                      ),
+                                      onPressed: () {},
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
                         ],
                       )
 
@@ -577,13 +837,17 @@ class BrowsAnalytics extends StatelessWidget {
                 ),
                 Card(
                   elevation: 5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
                   child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(AppLocalizations.of(context)!.medialEyebrowTilt,
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
                           Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/medial_eyebrow_tilt.png',
+                            fit: BoxFit.fitWidth,
                             loadingBuilder: (BuildContext context, Widget child,
                                 ImageChunkEvent? loadingProgress) {
                               if (loadingProgress == null) {
@@ -598,6 +862,68 @@ class BrowsAnalytics extends StatelessWidget {
                                 ),
                               );
                             },),
+                          Container(
+                            padding: const EdgeInsets.fromLTRB(15, 15, 15, 0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                    AppLocalizations.of(context)!.medialEyebrowTilt,
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                      color: Colors.grey[800],
+                                    )
+                                ),
+                                Container(height: 10),
+                                Text(
+                                  AppLocalizations.of(context)!.medialEyebrowTiltTheory,
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.grey[700],
+                                  ),
+                                ),
+                                Container(height: 10),
+                                Text(
+                                  MakeConclusion.getMedialEyebrowTilt(context),
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.grey[700],
+                                  ),
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    // Add a spacer to push the buttons to the right side of the card
+                                    const Spacer(),
+                                    // Add a text button labeled "SHARE" with transparent foreground color and an accent color for the text
+                                    TextButton(
+                                      style: TextButton.styleFrom(
+                                        foregroundColor: Colors.transparent,
+                                      ),
+                                      child: Text(
+                                        AppLocalizations.of(context)!.shareImage,
+                                        style: TextStyle(color: Colors.blue),
+                                      ),
+                                      onPressed: () {},
+                                    ),
+                                    // Add a text button labeled "EXPLORE" with transparent foreground color and an accent color for the text
+                                    TextButton(
+                                      style: TextButton.styleFrom(
+                                        foregroundColor: Colors.transparent,
+                                      ),
+                                      child: const Text(
+                                        "EXPLORE",
+                                        style: TextStyle(color: Colors.blue),
+                                      ),
+                                      onPressed: () {},
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
                         ],
                       )
 
@@ -1034,5 +1360,91 @@ class LipsModeling extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class MakeConclusion {
+
+  static String getMouthCanthalTilt(BuildContext context)
+  {
+    double mouthCantLeft = DATA['mouth_cant_left'];
+    double mouthCantRight = DATA['mouth_cant_right'];
+
+    if ((mouthCantLeft + mouthCantRight) / 2 > 0)
+    {
+      return AppLocalizations.of(context)!.mouthCornerAnglePositive;
+    }
+    else{
+      return AppLocalizations.of(context)!.mouthCornerAngleNegative;
+    }
+  }
+
+  static String getLipsRatio(BuildContext context)
+  {
+    double lipsRatio = DATA['lips_ratio'];
+
+    if (lipsRatio > 1.6)
+    {
+      return AppLocalizations.of(context)!.smallUpperLip;
+    }
+    if (lipsRatio < 1.0)
+    {
+      return AppLocalizations.of(context)!.bigUpperLip;
+    }
+    else{
+      return AppLocalizations.of(context)!.idealUpperLip;
+    }
+  }
+  static String getUpperLipRatio(BuildContext context)
+  {
+    double upperLipRatio = DATA['upper_lip_ratio'];
+
+    if (upperLipRatio > 2.2)
+    {
+      return AppLocalizations.of(context)!.bigWhiteUpperLip;
+    }
+    if (upperLipRatio < 1.8)
+    {
+      return AppLocalizations.of(context)!.smallWhiteUpperLip;
+    }
+    else{
+      return AppLocalizations.of(context)!.idealWhiteUpperLip;
+    }
+  }
+
+  static String getIntercanthalTilt(BuildContext context)
+  {
+    double intercanthalTiltLeft = DATA['canthal_tilt_left'];
+    double intercanthalTiltRight = DATA['canthal_tilt_right'];
+
+    if ((intercanthalTiltLeft + intercanthalTiltRight) / 2 > 7)
+    {
+      return AppLocalizations.of(context)!.canthalTiltIdeal;
+    }
+    if ((intercanthalTiltLeft + intercanthalTiltRight) / 2 < 4)
+    {
+      return AppLocalizations.of(context)!.canthalTiltLess;
+    }
+    else{
+      return AppLocalizations.of(context)!.canthalTiltAverage;
+    }
+  }
+
+  static String getMedialEyebrowTilt(BuildContext context)
+  {
+    double medialEyebrowTiltLeft = DATA['medial_eyebrow_tilt_left'];
+    double medialEyebrowTiltRight = DATA['medial_eyebrow_tilt_right'];
+
+    if ((medialEyebrowTiltLeft + medialEyebrowTiltRight) / 2 > 25)
+    {
+      return AppLocalizations.of(context)!.browMedialTiltBig;
+    }
+    if ((medialEyebrowTiltLeft + medialEyebrowTiltRight) / 2 < 15)
+    {
+      return AppLocalizations.of(context)!.browMedialTiltLow;
+    }
+    else{
+      return AppLocalizations.of(context)!.browMedialTiltIdeal;
+    }
   }
 }

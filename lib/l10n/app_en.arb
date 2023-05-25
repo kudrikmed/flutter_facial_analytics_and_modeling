@@ -142,5 +142,77 @@
   "mouthCornerAngleTheory": "One of the many features that contribute to the aging appearance of the perioral region is the downward turn to the oral commissures. This downward turn, which often extends to a significant oral commissure groove and ‘‘marionette’’ appearance, gives a sad, tired, almost angry look in some patients.",
   "@mouthCornerAngleTheory": {
     "description": "Mouth corner angle theory"
+    },
+  "mouthCornerAnglePositive": "Congratulations, in your case, gravitational ptosis of the facial soft tissues does not affect your corners of the mouth. This ensures an open and sincere smile and a rested, fresh appearance. To prevent the drooping of the mouth's corners, it is advisable to observe an adequate sleep regimen (at the same time, do not sleep on the face to prevent stretching of the facial skin) and monitor posture (correct posture helps to relax the neck muscles that pull the corners of the mouth down).",
+  "@mouthCornerAnglePositive": {
+    "description": "Conclusion, if mouth corner angle is positive"
+    },
+  "mouthCornerAngleNegative": "Share image",
+  "@mouthCornerAngleNegative": {
+    "description": "Conclusion, if mouth corner angle is negative"
+    },
+  "lipsRatioTheory": "The fundamental proportions of the lips change as a person ages, with lengthening of the cutaneous portion of the upper lip and volume loss and thinning of the upper lip vermilion. It is considered to be, that in youthful people, the ideal ratio of the vertical height of the upper lip to that of the lower lip is 1:1.6 (Mandy et al). Meanwhile, in a 2017 study (Heidekrueger et al) researchers found that an upper to lower lip ratio closer to 1:1 was considered the most attractive. These findings are more consistent with recent trends in cosmetic medicine, with many clients aiming for a fuller upper lip.",
+  "@lipsRatioTheory": {
+    "description": "Lips ratio theory"
+    },
+  "smallUpperLip": "To harmonize the lower third of the face, it is desirable to increase the volume of the upper lip. The 'gold standard' for lip augmentation is the use of hyaluronic acid fillers. At the same time, synthetic polymers based on silicone and acrylic should be categorically avoided. In your case, contouring techniques with superficial filler injection are well suited - this will increase the volume of the upper lip, turn it forward, while not giving the effect of 'duck' lips. For a long-term result, surgical methods for increasing the upper lip can be applied - different types of cheiloplasty.",
+  "@smallUpperLip": {
+    "description": "Conclusion, if upper lip is smaller"
+    },
+  "bigUpperLip": "To harmonize the lower third of the face, it is desirable to increase the volume of the upper lip. The 'gold standard' for lip augmentation is the use of hyaluronic acid fillers. At the same time, synthetic polymers based on silicone and acrylic should be categorically avoided. In your case, contouring techniques with superficial filler injection are well suited - this will increase the volume of the upper lip, turn it forward, while not giving the effect of 'duck' lips. For a long-term result, surgical methods for increasing the upper lip can be applied - different types of cheiloplasty.",
+  "@bigUpperLip": {
+    "description": "Conclusion, if upper lip is bigger"
+    },
+  "idealUpperLip": "Congratulations, in your case the ratio of the upper and lower lips is ideal. To prevent the loss of volumes, it is recommended to observe the drinking regimen and avoid chapping of the lips.",
+    "@idealUpperLip": {
+      "description": "Conclusion, if lips are ideal"
+      },
+  "upperLipRatioTheory": "According to Anic-Milosevic el al the upper lip height occupies about one third of the face lower third in both genders (males 33.04%, females 32.38%)",
+  "@upperLipRatioTheory": {
+    "description": "Upper to lower lip ratio theory"
+    },
+  "bigWhiteUpperLip": "In your case, there is an extension of the vertical size of the upper lip. This is one of the most significant subconscious signs of age. For a small correction, volumetric contouring of the upper and lower lips with fillers based on hyaluronic acid is suitable. For a more effective result, surgical correction - cheiloplasty - is indicated.",
+  "@bigWhiteUpperLip": {
+    "description": "Conclusion, if upper white lips is big"
+    },
+  "smallWhiteUpperLip": "In your case, there is an imbalance in the lower third of the face with a decrease in the vertical size of the upper lip. The optimal method of correction is contour plastic surgery of the upper lip 'along the plane' with a filler based on hyaluronic acid. This will give a harmonious look to the lower third of the face without the effect of 'duck' lips. In addition, the aesthetics of the chin area should be additionally determined.",
+  "@smallWhiteUpperLip": {
+    "description": "Conclusion, if upper white lips is small"
+    },
+  "idealWhiteUpperLip": "In your case, there is an ideal ratio of the proportions in the lower third of the face. To prevent age-related changes, it is recommended to observe a drinking regime, to avoid chapping of the lips. Also an effective means of prevention is injection therapy of platelet-rich plasma.",
+  "@idealWhiteUpperLip": {
+    "description": "Conclusion, if upper white lips is ideal"
+    },
+  "intercanthalTiltTheory": "Canthal tilt is more accurately described as the inclination of the palpebral fissure (eyeopening). Bashour et al 2007 found that canthal tilt is a significant indicator in facial attractiveness with 93% of participants in the study preferring positive canthal tilts rather than negative ones. The сanthal tilt for an average face is 4.12° and for an attractive face is 7.13°.",
+  "@intercanthalTiltTheory": {
+    "description": "Intercanthal tilt theory"
+    },
+  "canthalTiltIdeal": "In your case, the cantal angle is ideal. This creates the effect of an attractive, slightly 'predatory' look. To prevent drooping of the outer corner of the eye, it is recommended to observe a sleep schedule and avoid certain mimic patterns - for example, stop 'squinting'.",
+  "@canthalTiltIdeal": {
+    "description": "Conclusion, if canthal tilt is ideal"
+    },
+  "canthalTiltLess": "A feeling of 'sad' sight (the so-called 'basset hound sight'). In this case, cosmetic procedures - including contouring methods - will be ineffective. Performing surgical correction is indicated - blepharoplasty with canthopexy or temporal lifting.",
+  "@canthalTiltLess": {
+    "description": "Conclusion, if canthal tilt is small"
+    },
+  "canthalTiltAverage": "Share image",
+  "@canthalTiltAverage": {
+    "description": "A feeling of 'sad' sight (the so-called 'basset hound sight'). In this case, cosmetic procedures - including contouring methods - will be ineffective. Performing surgical correction is indicated - blepharoplasty with canthopexy or temporal lifting."
+    },
+  "medialEyebrowTiltTheory": "According to Griffin at al, there are several characteristics of the ideal youthful eyebrow. For example, medial brow segment with a takeoff angle of 15° to 25°",
+  "@medialEyebrowTiltTheory": {
+    "description": "Medial eyebrow tilt theory"
+    },
+  "browMedialTiltBig": "In your case, the inclination angle of the eyebrows is very high. This gives the face a surprised expression, which negatively affects its aesthetics. As a rule, invasive procedures are not required to reduce the angle of inclination, cosmetic correction of the eyebrows or permanent makeup is sufficient.",
+  "@browMedialTiltBig": {
+    "description": "Brow medial tilt is too big"
+    },
+  "browMedialTiltIdeal": "In your case, the angle of the eyebrow is perfect. To prevent the drooping of the eyebrows, it is desirable to frown and wrinkle the forehead less. Injections of small doses of neuromodulators (botulinum toxin) into the brow area are also well suited.",
+  "@browMedialTiltIdeal": {
+    "description": "Brow medial tilt is ideal"
+    },
+  "browMedialTiltLow": "The low inner angle of the eyebrows in your case gives the face a frown, which negatively affects its aesthetics. The classic way to correct the drooping of the medial angle of the eyebrow is the use of neuromodulators (botulinum toxin). Other effective techniques are thread lifting and, in rare cases, the injections of fillers. For a long-term effect, plastic surgery is indicated: endoscopic lifting of the eyebrows and forehead.",
+  "@browMedialTiltLow": {
+    "description": "Brow medial tilt is too low"
     }
 }
