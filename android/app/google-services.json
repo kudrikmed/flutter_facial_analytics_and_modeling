@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "49426509086",
+    "project_id": "facial-analytics-and-modeling",
+    "storage_bucket": "facial-analytics-and-modeling.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:49426509086:android:e3ef875a547c4e69b02d0f",
+        "android_client_info": {
+          "package_name": "com.dk.facial_analytics_and_modeling"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "49426509086-6j91ic9u7qbscljncnlvgqgp6i18rr7g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCApf57bkyq4U89tWA-9hRqYNlZ71iCqwE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "49426509086-6j91ic9u7qbscljncnlvgqgp6i18rr7g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
