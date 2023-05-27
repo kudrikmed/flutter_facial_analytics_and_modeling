@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.all(8.0),
                 child:
                     selectedImagePath == ''
-                    ? Image.asset('assets/images/portrait_placeholder.png', height: 500, width: 500, fit: BoxFit.fill,)
+                    ? Image.asset('assets/images/portrait_placeholder.png', /*height: 500, width: 500,*/ fit: BoxFit.fill,)
                     : Image.file(File(selectedImagePath), scale: 1.0, height: 500, fit: BoxFit.fitHeight, filterQuality: FilterQuality.none,),
                 ),
               ),
