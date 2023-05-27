@@ -43,8 +43,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.all(8.0),
                 child:
                     selectedImagePath == ''
-                    ? Image.asset('assets/images/portrait_placeholder.png', /*height: 200, width: 200,*/ fit: BoxFit.fill,)
-                    : Image.file(File(selectedImagePath), scale: 1.0, fit: BoxFit.fill, filterQuality: FilterQuality.none,),
+                    ? Image.asset('assets/images/portrait_placeholder.png', height: 500, width: 500, fit: BoxFit.fill,)
+                    : Image.file(File(selectedImagePath), scale: 1.0, height: 500, fit: BoxFit.fitHeight, filterQuality: FilterQuality.none,),
                 ),
               ),
               SizedBox(
@@ -287,8 +287,8 @@ class _BottomNavigationBarExampleState
   int _selectedIndex = 0;
   static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   final List<Widget> _widgetOptions = <Widget>[
-    AnalyticsDashboard(),
     ModelingDashboard(),
+    AnalyticsDashboard(),
   ];
 
   void _onItemTapped(int index) {
@@ -310,13 +310,13 @@ class _BottomNavigationBarExampleState
         type: BottomNavigationBarType.fixed,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.analytics),
-            label: AppLocalizations.of(context)!.analytics,
-          ),
-          BottomNavigationBarItem(
             icon: Icon(Icons.face_retouching_natural_outlined),
             label: AppLocalizations.of(context)!.modeling,
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.analytics),
+            label: AppLocalizations.of(context)!.analytics,
+          )
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blue,
@@ -410,7 +410,7 @@ class LipsAnalytics extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/lips_cant.png',
                           fit: BoxFit.fitWidth,
@@ -466,21 +466,30 @@ class LipsAnalytics extends StatelessWidget {
                                       foregroundColor: Colors.transparent,
                                     ),
                                     child: Text(
-                                        AppLocalizations.of(context)!.shareImage,
+                                      AppLocalizations.of(context)!.shareImage,
                                       style: TextStyle(color: Colors.blue),
                                     ),
-                                    onPressed: () {},
+                                    onPressed: () async {
+                                      Share.share('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/lips_cant.png', );
+                                    },
                                   ),
                                   // Add a text button labeled "EXPLORE" with transparent foreground color and an accent color for the text
                                   TextButton(
                                     style: TextButton.styleFrom(
                                       foregroundColor: Colors.transparent,
                                     ),
-                                    child: const Text(
-                                      "EXPLORE",
+                                    child: Text(
+                                      AppLocalizations.of(context)!.saveImage,
                                       style: TextStyle(color: Colors.blue),
                                     ),
-                                    onPressed: () {},
+                                    onPressed: () async {
+                                      await GallerySaver.saveImage('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/lips_cant.png').then<void>((bool? success) {
+                                        if (success ?? false) {
+                                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                            content: Text(AppLocalizations.of(context)!.imageSaved),
+                                          ));
+                                        }});
+                                    },
                                   ),
                                 ],
                               ),
@@ -507,7 +516,7 @@ class LipsAnalytics extends StatelessWidget {
                   child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/lips_ratio.png',
                             fit: BoxFit.fitWidth,
@@ -566,18 +575,27 @@ class LipsAnalytics extends StatelessWidget {
                                         AppLocalizations.of(context)!.shareImage,
                                         style: TextStyle(color: Colors.blue),
                                       ),
-                                      onPressed: () {},
+                                      onPressed: () async {
+                                        Share.share('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/lips_ratio.png', );
+                                      },
                                     ),
                                     // Add a text button labeled "EXPLORE" with transparent foreground color and an accent color for the text
                                     TextButton(
                                       style: TextButton.styleFrom(
                                         foregroundColor: Colors.transparent,
                                       ),
-                                      child: const Text(
-                                        "EXPLORE",
+                                      child: Text(
+                                        AppLocalizations.of(context)!.saveImage,
                                         style: TextStyle(color: Colors.blue),
                                       ),
-                                      onPressed: () {},
+                                      onPressed: () async {
+                                        await GallerySaver.saveImage('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/lips_ratio.png').then<void>((bool? success) {
+                                          if (success ?? false) {
+                                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                              content: Text(AppLocalizations.of(context)!.imageSaved),
+                                            ));
+                                          }});
+                                      },
                                     ),
                                   ],
                                 ),
@@ -604,7 +622,7 @@ class LipsAnalytics extends StatelessWidget {
                   child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/upper_lip_ratio.png',
                             fit: BoxFit.fitWidth,
@@ -663,18 +681,27 @@ class LipsAnalytics extends StatelessWidget {
                                         AppLocalizations.of(context)!.shareImage,
                                         style: TextStyle(color: Colors.blue),
                                       ),
-                                      onPressed: () {},
+                                      onPressed: () async {
+                                        Share.share('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/upper_lip_ratio.png', );
+                                      },
                                     ),
                                     // Add a text button labeled "EXPLORE" with transparent foreground color and an accent color for the text
                                     TextButton(
                                       style: TextButton.styleFrom(
                                         foregroundColor: Colors.transparent,
                                       ),
-                                      child: const Text(
-                                        "EXPLORE",
+                                      child: Text(
+                                        AppLocalizations.of(context)!.saveImage,
                                         style: TextStyle(color: Colors.blue),
                                       ),
-                                      onPressed: () {},
+                                      onPressed: () async {
+                                        await GallerySaver.saveImage('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/upper_lip_ratio.png').then<void>((bool? success) {
+                                          if (success ?? false) {
+                                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                              content: Text(AppLocalizations.of(context)!.imageSaved),
+                                            ));
+                                          }});
+                                      },
                                     ),
                                   ],
                                 ),
@@ -724,7 +751,7 @@ class EyesAnalytics extends StatelessWidget {
                   child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/canthal_tilt.png',
                             fit: BoxFit.fitWidth,
@@ -783,18 +810,27 @@ class EyesAnalytics extends StatelessWidget {
                                         AppLocalizations.of(context)!.shareImage,
                                         style: TextStyle(color: Colors.blue),
                                       ),
-                                      onPressed: () {},
+                                      onPressed: () async {
+                                        Share.share('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/canthal_tilt.png', );
+                                      },
                                     ),
                                     // Add a text button labeled "EXPLORE" with transparent foreground color and an accent color for the text
                                     TextButton(
                                       style: TextButton.styleFrom(
                                         foregroundColor: Colors.transparent,
                                       ),
-                                      child: const Text(
-                                        "EXPLORE",
+                                      child: Text(
+                                        AppLocalizations.of(context)!.saveImage,
                                         style: TextStyle(color: Colors.blue),
                                       ),
-                                      onPressed: () {},
+                                      onPressed: () async {
+                                        await GallerySaver.saveImage('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/canthal_tilt.png').then<void>((bool? success) {
+                                          if (success ?? false) {
+                                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                              content: Text(AppLocalizations.of(context)!.imageSaved),
+                                            ));
+                                          }});
+                                      },
                                     ),
                                   ],
                                 ),
@@ -844,7 +880,7 @@ class BrowsAnalytics extends StatelessWidget {
                   child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/medial_eyebrow_tilt.png',
                             fit: BoxFit.fitWidth,
@@ -903,18 +939,27 @@ class BrowsAnalytics extends StatelessWidget {
                                         AppLocalizations.of(context)!.shareImage,
                                         style: TextStyle(color: Colors.blue),
                                       ),
-                                      onPressed: () {},
+                                      onPressed: () async {
+                                        Share.share('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/medial_eyebrow_tilt.png', );
+                                      },
                                     ),
                                     // Add a text button labeled "EXPLORE" with transparent foreground color and an accent color for the text
                                     TextButton(
                                       style: TextButton.styleFrom(
                                         foregroundColor: Colors.transparent,
                                       ),
-                                      child: const Text(
-                                        "EXPLORE",
+                                      child: Text(
+                                        AppLocalizations.of(context)!.saveImage,
                                         style: TextStyle(color: Colors.blue),
                                       ),
-                                      onPressed: () {},
+                                      onPressed: () async {
+                                        await GallerySaver.saveImage('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/medial_eyebrow_tilt.png').then<void>((bool? success) {
+                                          if (success ?? false) {
+                                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                              content: Text(AppLocalizations.of(context)!.imageSaved),
+                                            ));
+                                          }});
+                                      },
                                     ),
                                   ],
                                 ),
@@ -934,13 +979,17 @@ class BrowsAnalytics extends StatelessWidget {
                 ),
                 Card(
                   elevation: 5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
                   child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(AppLocalizations.of(context)!.eyebrowApexProjection,
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
                           Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/brow_apex_projection.png',
+                            fit: BoxFit.fitWidth,
                             loadingBuilder: (BuildContext context, Widget child,
                                 ImageChunkEvent? loadingProgress) {
                               if (loadingProgress == null) {
@@ -955,6 +1004,77 @@ class BrowsAnalytics extends StatelessWidget {
                                 ),
                               );
                             },),
+                          Container(
+                            padding: const EdgeInsets.fromLTRB(15, 15, 15, 0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                    AppLocalizations.of(context)!.eyebrowApexProjection,
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                      color: Colors.grey[800],
+                                    )
+                                ),
+                                Container(height: 10),
+                                Text(
+                                  AppLocalizations.of(context)!.browApexProjectionTheory,
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.grey[700],
+                                  ),
+                                ),
+                                Container(height: 10),
+                                Text(
+                                  MakeConclusion.getBrowApexProjection(context),
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.grey[700],
+                                  ),
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    // Add a spacer to push the buttons to the right side of the card
+                                    const Spacer(),
+                                    // Add a text button labeled "SHARE" with transparent foreground color and an accent color for the text
+                                    TextButton(
+                                      style: TextButton.styleFrom(
+                                        foregroundColor: Colors.transparent,
+                                      ),
+                                      child: Text(
+                                        AppLocalizations.of(context)!.shareImage,
+                                        style: TextStyle(color: Colors.blue),
+                                      ),
+                                      onPressed: () async {
+                                        Share.share('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/brow_apex_projection.png', );
+                                      },
+                                    ),
+                                    // Add a text button labeled "EXPLORE" with transparent foreground color and an accent color for the text
+                                    TextButton(
+                                      style: TextButton.styleFrom(
+                                        foregroundColor: Colors.transparent,
+                                      ),
+                                      child: Text(
+                                        AppLocalizations.of(context)!.saveImage,
+                                        style: TextStyle(color: Colors.blue),
+                                      ),
+                                      onPressed: () async {
+                                        await GallerySaver.saveImage('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/brow_apex_projection.png').then<void>((bool? success) {
+                                          if (success ?? false) {
+                                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                              content: Text(AppLocalizations.of(context)!.imageSaved),
+                                            ));
+                                          }});
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
                         ],
                       )
 
@@ -988,13 +1108,17 @@ class FaceFormAnalytics extends StatelessWidget {
                 ),
                 Card(
                   elevation: 5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
                   child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(AppLocalizations.of(context)!.bigonialBizygomaticRatio,
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
                           Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/bigonial_bizygomatic_ratio.png',
+                            fit: BoxFit.fitWidth,
                             loadingBuilder: (BuildContext context, Widget child,
                                 ImageChunkEvent? loadingProgress) {
                               if (loadingProgress == null) {
@@ -1009,6 +1133,77 @@ class FaceFormAnalytics extends StatelessWidget {
                                 ),
                               );
                             },),
+                          Container(
+                            padding: const EdgeInsets.fromLTRB(15, 15, 15, 0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                    AppLocalizations.of(context)!.bigonialBizygomaticRatio,
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                      color: Colors.grey[800],
+                                    )
+                                ),
+                                Container(height: 10),
+                                Text(
+                                  AppLocalizations.of(context)!.bigonialBizygomaticRatioTheory,
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.grey[700],
+                                  ),
+                                ),
+                                Container(height: 10),
+                                Text(
+                                  MakeConclusion.getBigonialBizygomaticRatio(context),
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.grey[700],
+                                  ),
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    // Add a spacer to push the buttons to the right side of the card
+                                    const Spacer(),
+                                    // Add a text button labeled "SHARE" with transparent foreground color and an accent color for the text
+                                    TextButton(
+                                      style: TextButton.styleFrom(
+                                        foregroundColor: Colors.transparent,
+                                      ),
+                                      child: Text(
+                                        AppLocalizations.of(context)!.shareImage,
+                                        style: TextStyle(color: Colors.blue),
+                                      ),
+                                      onPressed: () async {
+                                        Share.share('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/bigonial_bizygomatic_ratio.png', );
+                                      },
+                                    ),
+                                    // Add a text button labeled "EXPLORE" with transparent foreground color and an accent color for the text
+                                    TextButton(
+                                      style: TextButton.styleFrom(
+                                        foregroundColor: Colors.transparent,
+                                      ),
+                                      child: Text(
+                                        AppLocalizations.of(context)!.saveImage,
+                                        style: TextStyle(color: Colors.blue),
+                                      ),
+                                      onPressed: () async {
+                                        await GallerySaver.saveImage('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/bigonial_bizygomatic_ratio.png').then<void>((bool? success) {
+                                          if (success ?? false) {
+                                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                              content: Text(AppLocalizations.of(context)!.imageSaved),
+                                            ));
+                                          }});
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
                         ],
                       )
 
@@ -1109,6 +1304,27 @@ class AnalyticsDashboard extends StatelessWidget {
                     )
                 )
             ),
+            GestureDetector(
+                onTap: (){
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text(AppLocalizations.of(context)!.functionUnderDevelopment),
+                  ));
+                },
+                child:
+                Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)
+                    ),
+                    elevation: 4,
+                    margin: const EdgeInsets.all(20.0),
+                    child: Column(
+                        children: <Widget>[
+                          Image.asset('assets/images/nose_bw.png', height: 128, width: 128, fit: BoxFit.fill,),
+                          Text(AppLocalizations.of(context)!.nose)
+                        ]
+                    )
+                )
+            ),
           ]
 
       );
@@ -1146,6 +1362,90 @@ class ModelingDashboard extends StatelessWidget {
                   )
               )
           ),
+          GestureDetector(
+              onTap: (){
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text(AppLocalizations.of(context)!.functionUnderDevelopment),
+                ));
+              },
+              child:
+              Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)
+                  ),
+                  elevation: 4,
+                  margin: const EdgeInsets.all(20.0),
+                  child: Column(
+                      children: <Widget>[
+                        Image.asset('assets/images/visibility_bw.png', height: 128, width: 128, fit: BoxFit.fill,),
+                        Text(AppLocalizations.of(context)!.eyes)
+                      ]
+                  )
+              )
+          ),
+          GestureDetector(
+              onTap: (){
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text(AppLocalizations.of(context)!.functionUnderDevelopment),
+                ));
+              },
+              child:
+              Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)
+                  ),
+                  elevation: 4,
+                  margin: const EdgeInsets.all(20.0),
+                  child: Column(
+                      children: <Widget>[
+                        Image.asset('assets/images/eyebrow_bw.png', height: 128, width: 128, fit: BoxFit.fill,),
+                        Text(AppLocalizations.of(context)!.eyebrows)
+                      ]
+                  )
+              )
+          ),
+          GestureDetector(
+              onTap: (){
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text(AppLocalizations.of(context)!.functionUnderDevelopment),
+                ));
+              },
+              child:
+              Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)
+                  ),
+                  elevation: 4,
+                  margin: const EdgeInsets.all(20.0),
+                  child: Column(
+                      children: <Widget>[
+                        Image.asset('assets/images/face_bw.png', height: 128, width: 128, fit: BoxFit.fill,),
+                        Text(AppLocalizations.of(context)!.faceForm)
+                      ]
+                  )
+              )
+          ),
+          GestureDetector(
+              onTap: (){
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text(AppLocalizations.of(context)!.functionUnderDevelopment),
+                ));
+              },
+              child:
+              Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)
+                  ),
+                  elevation: 4,
+                  margin: const EdgeInsets.all(20.0),
+                  child: Column(
+                      children: <Widget>[
+                        Image.asset('assets/images/nose_bw.png', height: 128, width: 128, fit: BoxFit.fill,),
+                        Text(AppLocalizations.of(context)!.nose)
+                      ]
+                  )
+              )
+          ),
         ]
 
     );
@@ -1173,13 +1473,17 @@ class LipsModeling extends StatelessWidget {
                 ),
                 Card(
                   elevation: 5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
                   child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(AppLocalizations.of(context)!.flatBow,
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
-                          Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/transfer_1.jpg',
+                          Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/merged_1.png',
+                            fit: BoxFit.fitWidth,
                             loadingBuilder: (BuildContext context, Widget child,
                                 ImageChunkEvent? loadingProgress) {
                               if (loadingProgress == null) {
@@ -1194,53 +1498,79 @@ class LipsModeling extends StatelessWidget {
                                 ),
                               );
                             },),
+                          Container(
+                            padding: const EdgeInsets.fromLTRB(15, 15, 15, 0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                    AppLocalizations.of(context)!.variant_one,
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                      color: Colors.grey[800],
+                                    )
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    // Add a spacer to push the buttons to the right side of the card
+                                    const Spacer(),
+                                    // Add a text button labeled "SHARE" with transparent foreground color and an accent color for the text
+                                    TextButton(
+                                      style: TextButton.styleFrom(
+                                        foregroundColor: Colors.transparent,
+                                      ),
+                                      child: Text(
+                                        AppLocalizations.of(context)!.shareImage,
+                                        style: TextStyle(color: Colors.blue),
+                                      ),
+                                      onPressed: () async {
+                                        Share.share('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/merged_1.png', );
+                                      },
+                                    ),
+                                    // Add a text button labeled "EXPLORE" with transparent foreground color and an accent color for the text
+                                    TextButton(
+                                      style: TextButton.styleFrom(
+                                        foregroundColor: Colors.transparent,
+                                      ),
+                                      child: Text(
+                                        AppLocalizations.of(context)!.saveImage,
+                                        style: TextStyle(color: Colors.blue),
+                                      ),
+                                      onPressed: () async {
+                                        await GallerySaver.saveImage('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/merged_1.png').then<void>((bool? success) {
+                                          if (success ?? false) {
+                                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                              content: Text(AppLocalizations.of(context)!.imageSaved),
+                                            ));
+                                          }});
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
                         ],
                       )
 
                   ),
-                ),
-                SizedBox(
-                  height: 20.0,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    HomeScreenButton(
-                      iconData: Icons.save,
-                      buttonText: AppLocalizations.of(context)!.saveImage,
-                      onTap: () async {
-                        await GallerySaver.saveImage('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/transfer_1.jpg').then<void>((bool? success) {
-                          if (success ?? false) {
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Text(AppLocalizations.of(context)!.imageSaved),
-                            ));
-                          }});
-                      },
-                    ),
-                    SizedBox(
-                      width: 10.0,
-                    ),
-                    HomeScreenButton(
-                      iconData: Icons.share,
-                      buttonText: AppLocalizations.of(context)!.shareImage,
-                      onTap: () async {
-                        Share.share('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/transfer_1.jpg', );
-                      },
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 40.0,
                 ),
                 Card(
                   elevation: 5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
                   child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(AppLocalizations.of(context)!.vitreous,
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
-                          Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/transfer_2.jpg',
+                          Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/merged_2.png',
+                            fit: BoxFit.fitWidth,
                             loadingBuilder: (BuildContext context, Widget child,
                                 ImageChunkEvent? loadingProgress) {
                               if (loadingProgress == null) {
@@ -1255,53 +1585,79 @@ class LipsModeling extends StatelessWidget {
                                 ),
                               );
                             },),
+                          Container(
+                            padding: const EdgeInsets.fromLTRB(15, 15, 15, 0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                    AppLocalizations.of(context)!.variant_two,
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                      color: Colors.grey[800],
+                                    )
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    // Add a spacer to push the buttons to the right side of the card
+                                    const Spacer(),
+                                    // Add a text button labeled "SHARE" with transparent foreground color and an accent color for the text
+                                    TextButton(
+                                      style: TextButton.styleFrom(
+                                        foregroundColor: Colors.transparent,
+                                      ),
+                                      child: Text(
+                                        AppLocalizations.of(context)!.shareImage,
+                                        style: TextStyle(color: Colors.blue),
+                                      ),
+                                      onPressed: () async {
+                                        Share.share('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/merged_2.png', );
+                                      },
+                                    ),
+                                    // Add a text button labeled "EXPLORE" with transparent foreground color and an accent color for the text
+                                    TextButton(
+                                      style: TextButton.styleFrom(
+                                        foregroundColor: Colors.transparent,
+                                      ),
+                                      child: Text(
+                                        AppLocalizations.of(context)!.saveImage,
+                                        style: TextStyle(color: Colors.blue),
+                                      ),
+                                      onPressed: () async {
+                                        await GallerySaver.saveImage('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/merged_2.png').then<void>((bool? success) {
+                                          if (success ?? false) {
+                                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                              content: Text(AppLocalizations.of(context)!.imageSaved),
+                                            ));
+                                          }});
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
                         ],
                       )
 
                   ),
-                ),
-                SizedBox(
-                  height: 20.0,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    HomeScreenButton(
-                      iconData: Icons.save,
-                      buttonText: AppLocalizations.of(context)!.saveImage,
-                      onTap: () async {
-                        await GallerySaver.saveImage('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/transfer_2.jpg').then<void>((bool? success) {
-                          if (success ?? false) {
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Text(AppLocalizations.of(context)!.imageSaved),
-                            ));
-                              }});
-                      },
-                    ),
-                    SizedBox(
-                      width: 10.0,
-                    ),
-                    HomeScreenButton(
-                      iconData: Icons.share,
-                      buttonText: AppLocalizations.of(context)!.shareImage,
-                      onTap: () async {
-                        Share.share('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/transfer_2.jpg', );
-                      },
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 40.0,
                 ),
                 Card(
                   elevation: 5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
                   child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(AppLocalizations.of(context)!.french,
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
-                          Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/transfer_3.jpg',
+                          Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/merged_3.png',
+                            fit: BoxFit.fitWidth,
                             loadingBuilder: (BuildContext context, Widget child,
                                 ImageChunkEvent? loadingProgress) {
                               if (loadingProgress == null) {
@@ -1316,45 +1672,240 @@ class LipsModeling extends StatelessWidget {
                                 ),
                               );
                             },),
+                          Container(
+                            padding: const EdgeInsets.fromLTRB(15, 15, 15, 0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                    AppLocalizations.of(context)!.variant_three,
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                      color: Colors.grey[800],
+                                    )
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    // Add a spacer to push the buttons to the right side of the card
+                                    const Spacer(),
+                                    // Add a text button labeled "SHARE" with transparent foreground color and an accent color for the text
+                                    TextButton(
+                                      style: TextButton.styleFrom(
+                                        foregroundColor: Colors.transparent,
+                                      ),
+                                      child: Text(
+                                        AppLocalizations.of(context)!.shareImage,
+                                        style: TextStyle(color: Colors.blue),
+                                      ),
+                                      onPressed: () async {
+                                        Share.share('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/merged_3.png', );
+                                      },
+                                    ),
+                                    // Add a text button labeled "EXPLORE" with transparent foreground color and an accent color for the text
+                                    TextButton(
+                                      style: TextButton.styleFrom(
+                                        foregroundColor: Colors.transparent,
+                                      ),
+                                      child: Text(
+                                        AppLocalizations.of(context)!.saveImage,
+                                        style: TextStyle(color: Colors.blue),
+                                      ),
+                                      onPressed: () async {
+                                        await GallerySaver.saveImage('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/merged_3.png').then<void>((bool? success) {
+                                          if (success ?? false) {
+                                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                              content: Text(AppLocalizations.of(context)!.imageSaved),
+                                            ));
+                                          }});
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
                         ],
                       )
 
                   ),
                 ),
-                SizedBox(
-                  height: 20.0,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    HomeScreenButton(
-                      iconData: Icons.save,
-                      buttonText: AppLocalizations.of(context)!.saveImage,
-                      onTap: () async {
-                        await GallerySaver.saveImage('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/transfer_3.jpg').then<void>((bool? success) {
-                          if (success ?? false) {
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Text(AppLocalizations.of(context)!.imageSaved),
-                            ));
-                          }});
-                      },
-                    ),
-                    SizedBox(
-                      width: 10.0,
-                    ),
-                    HomeScreenButton(
-                      iconData: Icons.share,
-                      buttonText: AppLocalizations.of(context)!.shareImage,
-                      onTap: () async {
-                        Share.share('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/transfer_3.jpg', );
-                      },
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 20.0,
-                ),
+                Card(
+                  elevation: 5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/merged_4.png',
+                            fit: BoxFit.fitWidth,
+                            loadingBuilder: (BuildContext context, Widget child,
+                                ImageChunkEvent? loadingProgress) {
+                              if (loadingProgress == null) {
+                                return child;
+                              }
+                              return Center(
+                                child: CircularProgressIndicator(
+                                  value: loadingProgress.expectedTotalBytes != null
+                                      ? loadingProgress.cumulativeBytesLoaded /
+                                      loadingProgress.expectedTotalBytes!
+                                      : null,
+                                ),
+                              );
+                            },),
+                          Container(
+                            padding: const EdgeInsets.fromLTRB(15, 15, 15, 0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                    AppLocalizations.of(context)!.variant_four,
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                      color: Colors.grey[800],
+                                    )
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    // Add a spacer to push the buttons to the right side of the card
+                                    const Spacer(),
+                                    // Add a text button labeled "SHARE" with transparent foreground color and an accent color for the text
+                                    TextButton(
+                                      style: TextButton.styleFrom(
+                                        foregroundColor: Colors.transparent,
+                                      ),
+                                      child: Text(
+                                        AppLocalizations.of(context)!.shareImage,
+                                        style: TextStyle(color: Colors.blue),
+                                      ),
+                                      onPressed: () async {
+                                        Share.share('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/merged_4.png', );
+                                      },
+                                    ),
+                                    // Add a text button labeled "EXPLORE" with transparent foreground color and an accent color for the text
+                                    TextButton(
+                                      style: TextButton.styleFrom(
+                                        foregroundColor: Colors.transparent,
+                                      ),
+                                      child: Text(
+                                        AppLocalizations.of(context)!.saveImage,
+                                        style: TextStyle(color: Colors.blue),
+                                      ),
+                                      onPressed: () async {
+                                        await GallerySaver.saveImage('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/merged_4.png').then<void>((bool? success) {
+                                          if (success ?? false) {
+                                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                              content: Text(AppLocalizations.of(context)!.imageSaved),
+                                            ));
+                                          }});
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                        ],
+                      )
 
+                  ),
+                ),
+                Card(
+                  elevation: 5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Image.network('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/merged_5.png',
+                            fit: BoxFit.fitWidth,
+                            loadingBuilder: (BuildContext context, Widget child,
+                                ImageChunkEvent? loadingProgress) {
+                              if (loadingProgress == null) {
+                                return child;
+                              }
+                              return Center(
+                                child: CircularProgressIndicator(
+                                  value: loadingProgress.expectedTotalBytes != null
+                                      ? loadingProgress.cumulativeBytesLoaded /
+                                      loadingProgress.expectedTotalBytes!
+                                      : null,
+                                ),
+                              );
+                            },),
+                          Container(
+                            padding: const EdgeInsets.fromLTRB(15, 15, 15, 0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                    AppLocalizations.of(context)!.variant_five,
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                      color: Colors.grey[800],
+                                    )
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    // Add a spacer to push the buttons to the right side of the card
+                                    const Spacer(),
+                                    // Add a text button labeled "SHARE" with transparent foreground color and an accent color for the text
+                                    TextButton(
+                                      style: TextButton.styleFrom(
+                                        foregroundColor: Colors.transparent,
+                                      ),
+                                      child: Text(
+                                        AppLocalizations.of(context)!.shareImage,
+                                        style: TextStyle(color: Colors.blue),
+                                      ),
+                                      onPressed: () async {
+                                        Share.share('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/merged_5.png', );
+                                      },
+                                    ),
+                                    // Add a text button labeled "EXPLORE" with transparent foreground color and an accent color for the text
+                                    TextButton(
+                                      style: TextButton.styleFrom(
+                                        foregroundColor: Colors.transparent,
+                                      ),
+                                      child: Text(
+                                        AppLocalizations.of(context)!.saveImage,
+                                        style: TextStyle(color: Colors.blue),
+                                      ),
+                                      onPressed: () async {
+                                        await GallerySaver.saveImage('http://dkcosmetics.by/facial/photos/lipsapi/' + WEBPATH + '/merged_5.png').then<void>((bool? success) {
+                                          if (success ?? false) {
+                                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                              content: Text(AppLocalizations.of(context)!.imageSaved),
+                                            ));
+                                          }});
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                        ],
+                      )
+
+                  ),
+                ),
               ]
           ),
         ),
@@ -1445,6 +1996,41 @@ class MakeConclusion {
     }
     else{
       return AppLocalizations.of(context)!.browMedialTiltIdeal;
+    }
+  }
+
+  static String getBrowApexProjection(BuildContext context)
+  {
+    double browApexProjectionLeft = DATA['brow_apex_projection_left'];
+    double browApexProjectionRight = DATA['brow_apex_projection_right'];
+
+    if ((browApexProjectionLeft + browApexProjectionRight) / 2 > 1)
+    {
+      return AppLocalizations.of(context)!.browApexIdeal;
+    }
+    if ((browApexProjectionLeft + browApexProjectionRight) / 2 < 0.7)
+    {
+      return AppLocalizations.of(context)!.browApexLow;
+    }
+    else{
+      return AppLocalizations.of(context)!.browApexNormal;
+    }
+  }
+
+  static String getBigonialBizygomaticRatio(BuildContext context)
+  {
+    double bigonialBizygomaticRatio = DATA['bigonial_bizygomatic_ratio'];
+
+    if (bigonialBizygomaticRatio > 0.75)
+    {
+      return AppLocalizations.of(context)!.bigonialBizygomaticMore;
+    }
+    if (bigonialBizygomaticRatio < 0.7)
+    {
+      return AppLocalizations.of(context)!.bigonialBizygomaticLess;
+    }
+    else{
+      return AppLocalizations.of(context)!.bigonialBizygomaticIdeal;
     }
   }
 }

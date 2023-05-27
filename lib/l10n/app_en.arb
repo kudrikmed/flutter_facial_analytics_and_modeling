@@ -214,5 +214,65 @@
   "browMedialTiltLow": "The low inner angle of the eyebrows in your case gives the face a frown, which negatively affects its aesthetics. The classic way to correct the drooping of the medial angle of the eyebrow is the use of neuromodulators (botulinum toxin). Other effective techniques are thread lifting and, in rare cases, the injections of fillers. For a long-term effect, plastic surgery is indicated: endoscopic lifting of the eyebrows and forehead.",
   "@browMedialTiltLow": {
     "description": "Brow medial tilt is too low"
+    },
+  "browApexProjectionTheory": "The brow peak is located at the lateral canthus for younger women. The older the patient, the more medial the brow peak can be.",
+  "@browApexProjectionTheory": {
+    "description": "Brow apex projection theory"
+    },
+  "browApexIdeal": "In your case, the position of the eyebrow bending point is outside the outer corner of the eye. This position gives the upper third of the face a young and attractive appearance. In this case, no adjustments are required.",
+  "@browApexIdeal": {
+    "description": "Conclusion, if brow apex is ideal"
+    },
+  "browApexNormal": "In your case, the position of the eyebrow bending point is near the outer corner of the eye. This shape of the eyebrow is found in most adults. To give the face a more youthful appearance, minimally invasive correction methods, such as thread lifting, are suitable. For a long-term result, a temporal lift with upper blepharoplasty is indicated. The popularity of this procedure is largely determined by the fact that Bella Hadid and Megan Fox resorted to it.",
+  "@browApexNormal": {
+    "description": "Conclusion, if brow apex is normal"
+    },
+  "browApexLow": "In your case, the position of the eyebrow bending point is displaced inwards. This gives the face a tired, sad look and visually adds age. For correction, contouring methods, such as thread lifts, are used. For a long-term result, a temporal lift with upper blepharoplasty is indicated.",
+  "@browApexLow": {
+    "description": "Conclusion, if brow apex is low"
+    },
+  "bigonialBizygomaticRatioTheory": "Bigonial width, measured from the soft tissue overlying the most lateral point of each mandibular angle gonion, is usually 0.70−0.75 of bizygomatic width, measured from the most lateral point of the soft tissue overlying each zygomatic arch. This ratio indicates the ideal face shape in the form of a heart/diamond.",
+  "@bigonialBizygomaticRatioTheory": {
+    "description": "Bigonial-bizygomatic ratio theory"
+    },
+  "bigonialBizygomaticIdeal": "You have an ideal bigonial-biscule ratio. To preserve it, try to avoid volume methods of contouring the middle third of the face. Also, control your calcium and vitamin D levels. Osteomalacia can lead to both a change in the angle of the mandible and a loss of volume in the zygomatic bones. For long-term preservation of your ideal face shape, microcurrent therapy is well suited from instrumental methods, and thread lifts of the temporal region, as well as the middle and lower thirds of the face, are well suited from contour methods.",
+  "@bigonialBizygomaticRatioIdeal": {
+    "description": "Conclusion, if bigonial-bizygomatic ratio is ideal"
+    },
+  "bigonialBizygomaticMore": "Your lower third of the face dominates over the middle third. For correction, you can move in two directions: reduce the volume of the lower third and increase the middle third. Non-invasive ultrasound and radio frequency lifts, fine needle laser and ultrasound lipoaspiration, SPACE surgical facelift or, preferably, SMAS, are effective procedures for reducing the volume of the lower third. Thread lifts will be ineffective due to the large mass of tissues in the lower third of the face - the threads will not withstand such a load. Also, do not expect much from skin care cosmetics or lipolytics. And to increase the volume of the middle third of the face, volumetric plastic with fillers is ideal. If your face is not prone to puffiness, you can use preparations based on hyaluronic acid. If the face periodically swells, fillers based on calcium hydroxyapatite will be the drug of choice. Also, a good result can be achieved by lipofilling. At the same time, excess adipose tissue can be taken just from the lower third of the face. Thread lifts of the middle third of the face will also be effective. This procedure will return the sagging soft tissues of the middle third of the face into place. Similarly, a surgical lift of the middle third of the face will work.",
+  "@bigonialBizygomaticRatioMore": {
+    "description": "Conclusion, if bigonial-bizygomatic ratio is more"
+    },
+  "bigonialBizygomaticLess": "You have the middle third of the face prevailing over the lower third. As a rule, this is due to the involution of the mandible. For correction, injection contouring in the area of ​​the corners of the lower jaw is optimal. In this case, preference should be given to drugs based on calcium hydroxyapatite. Fillers with hyaluronic acid and lipofilling poorly restore the lower jaw area. Also, a contour thread lift of the lower third of the face and subchin area will show a good result.",
+  "@bigonialBizygomaticRatioLess": {
+    "description": "Conclusion, if bigonial-bizygomatic ratio is less"
+    },
+  "variant_one": "Variant 1",
+  "@variant_one": {
+    "description": "Variant 1"
+    },
+  "variant_two": "Variant 2",
+  "@variant_two": {
+    "description": "Variant 2"
+    },
+  "variant_three": "Variant 3",
+  "@variant_three": {
+    "description": "Variant 3"
+    },
+  "variant_four": "Variant 4",
+  "@variant_four": {
+    "description": "Variant 4"
+    },
+  "variant_five": "Variant 5",
+  "@variant_five": {
+    "description": "Variant 5"
+    },
+  "functionUnderDevelopment": "Function is under development",
+  "@functionUnderDevelopment": {
+    "description": "Function is under development"
+    },
+  "nose": "Nose",
+  "@nose": {
+    "description": "Nose"
     }
 }
