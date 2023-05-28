@@ -3,7 +3,7 @@
   "@helloWorld": {
     "description": "The conventional newborn programmer greeting"
   },
-  "appName": "SuperFace",
+  "appName": "VirtuLooks",
   "@appName": {
     "description": "Application name"
   },
